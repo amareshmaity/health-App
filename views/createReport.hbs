@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Report</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h2>Create Report</h2>
+<form action="/reports/create" method="POST">
+  <!-- Patient Selection Field -->
+  <label for="patient">Patient Name:</label>
+  <select name="patientId" id="patient" required>
+    {{#each patients}}
+      <option value="{{_id}}">{{name}}</option>
+    {{/each}}
+  </select>
+  <br><br>
+  
+  <!-- Status Field -->
+  <label for="status">Status:</label>
+  <input type="text" id="status" name="status" required>
+  <br><br>
+
+  <!-- Details Field -->
+  <label for="details">Details:</label>
+  <textarea id="details" name="details" rows="4" required></textarea>
+  <br><br>
+
+  <button type="submit">Create Report</button>
+</form>
+<br>
+ <!-- Back to Home Button -->
+<button onclick="goHome()" class="btn btn-back">Back to Home</button>
+</body>
+</html>
+<script>
+  // Function to redirect to the home page
+  function goHome() {
+    window.location.href = '/';
+  }
+</script>

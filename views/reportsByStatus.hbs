@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports by Status</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Reports by Status</h1>
+    <nav>
+        <ul>
+            <li><a href="/reports/create">Create Report</a></li>
+            <li><a href="/reports/view-all">View All Reports</a></li>
+        </ul>
+    </nav>
+    {{#if reports.length}}
+        <ul>
+            {{#each reports}}
+                <li>
+                    Patient: {{this.patient}}
+                    - Status: {{this.status}}
+                    - Details: {{this.details}}
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No reports available with this status.</p>
+    {{/if}}
+     <!-- Back to Home Button -->
+   <button onclick="goHome()" class="btn btn-back">Back to Home</button>
+</body>
+</html>
+<script>
+  // Function to redirect to the home page
+  function goHome() {
+    window.location.href = '/';
+  }
+</script>
+

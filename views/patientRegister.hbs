@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/style.css">
+<h2>Register as Patient</h2>
+<form id="patientRegistrationForm" action="/patients/register" method="POST">
+  <!-- Token Number Field -->
+  <label for="tokenNumber">Token Number:</label>
+  <input type="number" name="tokenNumber" id="tokenNumber" required>
+  <br><br>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  <br><br>
+  <!-- Phone Number Field -->
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="tel" name="phoneNumber" id="phoneNumber" required>
+  <br><br>
+  <button type="submit">Register</button>
+  
+</form>
+ <!-- Back to Home Button -->
+<button onclick="goHome()" class="btn btn-back">Back to Home</button>
+
+<script>
+  // Function to redirect to the home page
+  function goHome() {
+    window.location.href = '/';
+  }
+</script>
+

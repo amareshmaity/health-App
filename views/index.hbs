@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare App</title>
+    {{!-- <link rel="stylesheet" href="/css/style.css"> --}}
+</head>
+<body>
+    <h1>Home Page</h1>
+    <nav>
+        <ul>
+            <li><a href="/doctors/register">Register As a Doctor</a></li>
+            <li><a href="/doctors/login">Login As a Doctor</a></li>
+            <li><a href="/doctors/view-all">View All Doctors</a></li> 
+            <li><a href="/patients/register">Register As a Patient</a></li>
+            <li><a href="/reports/create">Create a Report</a></li> <!-- Add this line -->
+            <li><a href="/reports/view-all">View All Reports</a></li> <!-- Ensure this link is present -->
+
+        </ul>
+    </nav>
+
+    <main>
+        {{{body}}} <!-- This will render the content of the current page -->
+    </main>
+</body>
+</html>
+
