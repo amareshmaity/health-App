@@ -1,4 +1,4 @@
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const Doctor = require('../models/doctor');
 // Register Doctor
 exports.registerDoctor = async (req, res) => {
