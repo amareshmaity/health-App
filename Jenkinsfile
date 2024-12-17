@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment{
+        SSH_KEY_PATH='D:\\healthapp1.pem'
+        SSH_USER='ec2-user'
+        SSH_HOST='51.20.1.118'
+    }
+
     stages {
         stage('checkout') {
             steps {
@@ -31,6 +37,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 bat """
+                ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} ^ 
                 docker stop health-app || true
                 docker rm health-app || true
                 docker rmi amareshmaity/health-app:latest || true

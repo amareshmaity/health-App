@@ -8,4 +8,4 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - MONGO_URI=mongodb+srv://amareshmaity2002:X37tl4hLW7O8T86T@cluster0.g2ktfbf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - MONGO_URI=mongodb+srv://amareshmaity2002:X37tl4hLW7O8T86T@cluster0.g2ktfbf.mongodb.net/HealthAPP?retryWrites=true&w=majority&appName=Cluster0
