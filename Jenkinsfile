@@ -2,35 +2,42 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
+        stage('checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/FatimaMalik9/Health-App.git'
+                git url: 'https://github.com/amareshmaity/health-App.git', 
+                branch: 'main'
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Docker Build') {
-            steps {
-                sh 'docker build -t healthcare-app .'
-            }
-        }
-        stage('Docker Compose Up') {
-            steps {
-                sh 'docker-compose down'
-                sh 'docker-compose up -d'
-            }
-        }
-    }
 
-    post {
-        success {
-            echo 'Healthcare app deployed successfully!'
+        stage('Build') {
+            steps {
+                bat 'docker-compose build --no-cache'
+            }
         }
-        failure {
-            echo 'Build or deployment failed.'
+
+        stage('Tag Image') {
+            steps {
+                bat 'docker tag health-app amareshmaity/health-app:latest'
+            }
+        }
+
+        stage('Push Image') {
+            steps {
+                bat 'docker login -u amareshmaity -p aS!PnJ7MDfCgxe9'
+                bat 'docker push amareshmaity/health-app:latest'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat """
+                docker stop health-app || true
+                docker rm health-app || true
+                docker rmi amareshmaity/health-app:latest || true
+                docker pull amareshmaity/health-app:latest
+                docker run --name health-app -p 3000:3000 amareshmaity/health-app:latest
+                """
+            }
         }
     }
 }
