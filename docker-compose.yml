@@ -3,11 +3,9 @@ version: '3.8'
 services:
   healthcare-app:
     build: .
-    container_name: healthcare_app
+    image: healthcare_app
     ports:
       - "3000:3000"
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
     environment:
       - NODE_ENV=production
+      - MONGO_URI=mongodb+srv://amareshmaity2002:X37tl4hLW7O8T86T@cluster0.g2ktfbf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
